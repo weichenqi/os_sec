@@ -34,7 +34,7 @@ import subprocess, re, commands
 def ShellCommand(cmd):
     popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     line = popen.stdout.readline().strip()
-    return line
+    print line
 
 print "OS Release's version is:"
 ShellCommand('cat /etc/redhat-release ')
