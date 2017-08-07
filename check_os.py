@@ -50,7 +50,7 @@ print "The newest software sec update "+output
 content = open('/etc/passwd').read()
 reObj1 = re.compile('(\w+).*?/bin/bash')
 s = reObj1.findall(content)
-print "User's shell is /bin/bash "s[0]
+print "User's shell is /bin/bash "+s[0]
 
 
 (status, output) = commands.getstatusoutput('netstat -tunlp')
