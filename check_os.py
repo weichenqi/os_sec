@@ -33,7 +33,7 @@ import subprocess, re, commands
 def ShellCommand(cmd):
     popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     line = popen.stdout.readline().strip()
-    return line
+    print line
 
 def LinuxCommand(lcmd):
     (status, output) = commands.getstatusoutput(lcmd)
@@ -41,7 +41,8 @@ def LinuxCommand(lcmd):
 
 ShellCommand('cat /etc/redhat-release ')
 ShellCommand('uname -r')
-(status, output) = commands.getstatusoutput('yum list-sec')
+
+LinuxCommand('yum list-sec')
 s = re.sub("Loaded plugins: fastestmirror", "", output)
 r = re.sub("updateinfo list done", "", s)
 print r
