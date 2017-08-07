@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Time: 2017-08-04 13:41 
+# @Author  : George Wei (weichenqi@gmail.com)
+# @Link    : http://weichenqi.com
+# @Version : 0.1
+
+'''
+title：操作系统安全检查
+1.操作系统版本
+2.内核版本
+3.yum最新安全更新
+4.可登陆用户
+5.可登陆且无密码用户
+6.监听端口
+7.防火墙是否启用
+8.本机时间是否准确
+9.ssh是否默认22端口
+10.密码登录还是秘钥登录
+11.是否允许root登录
+12.selinux是否启用
+13.密码过期时间
+14.文件基线检测/etc/  6个bin目录
+15.内核安全参数检测
+16.开启启动任务检查
+17.crontab任务检查
+18.最近登录日志审计（最近一周登录的时间，源ip）
+19.ipmi检查
+'''
+
+import subprocess
+
+def ShellCommand(cmd):
+    popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    line = popen.stdout.readline().strip()
+    print line
+
+ShellCommand('cat /etc/issue')
+ShellCommand('uname -r')
