@@ -7,6 +7,7 @@
 
 '''
 title：centos 7操作系统安全检查
+base ：python 2.7
 1.操作系统版本
 2.内核版本
 3.yum最新安全更新
@@ -33,10 +34,12 @@ import subprocess, re, commands
 def ShellCommand(cmd):
     popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     line = popen.stdout.readline().strip()
-    print line
+    return line
 
-print "OS Release's version is:"
+
 ShellCommand('cat /etc/redhat-release ')
+print "OS Release's version is: "+line
+
 print "OS kernel's version is:"
 ShellCommand('uname -r')
 (status, output) = commands.getstatusoutput('yum list kernel.x86_64 -q')
