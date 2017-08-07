@@ -6,7 +6,7 @@
 # @Version : 0.1
 
 '''
-title：操作系统安全检查
+title：centos 7操作系统安全检查
 1.操作系统版本
 2.内核版本
 3.yum最新安全更新
@@ -28,7 +28,7 @@ title：操作系统安全检查
 19.ipmi检查
 '''
 
-import subprocess
+import subprocess, re, os
 
 def ShellCommand(cmd):
     popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -37,3 +37,7 @@ def ShellCommand(cmd):
 
 ShellCommand('cat /etc/redhat-release ')
 ShellCommand('uname -r')
+ShellCommand('yum list-sec')
+
+content = os.popen('/etc/passwd').readlines()
+print content
