@@ -50,6 +50,6 @@ print s
 
 
 (status, output) = commands.getstatusoutput('netstat -tunlp')
-r = re.sub("Active Internet connections (only servers)", "", output)
+r = re.sub("Active Internet connections \(only servers\)", "", output)
 s = re.sub("Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name ", "", r)
 print s
