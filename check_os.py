@@ -35,5 +35,5 @@ def ShellCommand(cmd):
     line = popen.stdout.readline().strip()
     print line
 
-ShellCommand('cat /etc/issue')
+ShellCommand('cat /etc/redhat-release ')
 ShellCommand('uname -r')
