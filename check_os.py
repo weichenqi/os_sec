@@ -40,7 +40,7 @@ ShellCommand('cat /etc/redhat-release ')
 print "OS kernel's version"
 ShellCommand('uname -r')
 (status, output) = commands.getstatusoutput('yum list kernel.x86_64 -q')
-reObj1 = re.compile('kernel\.x86_64(.*?)updates')
+reObj1 = re.compile('kernel\.x86_64\w+(.*?)updates')
 s = reObj1.findall(output)
 print "The newest kernel version is "+str(s)
 
