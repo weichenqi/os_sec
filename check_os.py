@@ -37,7 +37,7 @@ def ShellCommand(cmd):
 
 def LinuxCommand(lcmd):
     (status, output) = commands.getstatusoutput(lcmd)
-    return output
+    print output
 
 ShellCommand('cat /etc/redhat-release ')
 ShellCommand('uname -r')
