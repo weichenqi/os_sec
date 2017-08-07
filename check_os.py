@@ -38,10 +38,9 @@ def ShellCommand(cmd):
 ShellCommand('cat /etc/redhat-release ')
 ShellCommand('uname -r')
 (status, output) = commands.getstatusoutput('yum list-sec')
-print output
-re.sub("Loaded plugins: fastestmirror", "", output)
-re.sub("updateinfo list done", "", output)
-print output
+s = re.sub("Loaded plugins: fastestmirror", "", output)
+re.sub("updateinfo list done", "", s)
+print s
 
 content = open('/etc/passwd').read()
 reObj1 = re.compile('(\w+).*?/bin/bash')
