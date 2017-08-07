@@ -35,25 +35,25 @@ def ShellCommand(cmd):
     line = popen.stdout.readline().strip()
     print line
 
-print "OS release's version"
+print "OS Release's version is:"
 ShellCommand('cat /etc/redhat-release ')
-print "OS kernel's version"
+print "OS kernel's version is:"
 ShellCommand('uname -r')
 (status, output) = commands.getstatusoutput('yum list kernel.x86_64 -q')
-reObj1 = re.compile('kernel\.x86_64\w+(.*?)updates')
-s = reObj1.findall(output)
+reObj1 = re.compile('kernel\.x86_64\s+(.*?)\s+updates')
+s = reObj1.findall(output)[0]
 print "The newest kernel version is "+str(s)
 
 (status, output) = commands.getstatusoutput('yum list-sec -q')
-print output
+print "The newest software sec update "+output
 
 content = open('/etc/passwd').read()
 reObj1 = re.compile('(\w+).*?/bin/bash')
 s = reObj1.findall(content)
-print s[0]
+print "User's shell is /bin/bash "s[0]
 
 
 (status, output) = commands.getstatusoutput('netstat -tunlp')
 r = re.sub("Active Internet connections \(only servers\)", "", output)
 s = re.sub("Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name ", "", r)
-print s
+print "Listen Tcp and Udp port details "+s
