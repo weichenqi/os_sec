@@ -35,14 +35,10 @@ def ShellCommand(cmd):
     line = popen.stdout.readline().strip()
     print line
 
-def LinuxCommand(lcmd):
-    (status, output) = commands.getstatusoutput(lcmd)
-    print output
-
 ShellCommand('cat /etc/redhat-release ')
 ShellCommand('uname -r')
 
-LinuxCommand('yum list-sec')
+(status, output) = commands.getstatusoutput('yum list-sec')
 s = re.sub("Loaded plugins: fastestmirror", "", output)
 r = re.sub("updateinfo list done", "", s)
 print r
