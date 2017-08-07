@@ -28,7 +28,7 @@ title：centos 7操作系统安全检查
 19.ipmi检查
 '''
 
-import subprocess, re, time
+import subprocess, re
 
 def ShellCommand(cmd):
     popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -37,10 +37,9 @@ def ShellCommand(cmd):
 
 ShellCommand('cat /etc/redhat-release ')
 ShellCommand('uname -r')
-ShellCommand('yum list-sec')
-time.sleep(30)
+#ShellCommand('yum list-sec')
 
-content = open('/etc/passwd').readlines()
+content = open('/etc/passwd').read()
 reObj1 = re.compile('/bin/bash')
 s = reObj1.findall(content)
 print s
