@@ -41,4 +41,6 @@ ShellCommand('yum list-sec')
 time.sleep(30)
 
 content = open('/etc/passwd').readlines()
-print content
+reObj1 = re.compile('/bin/bash')
+s = reObj1.findall(content)
+print s
