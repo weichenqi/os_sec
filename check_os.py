@@ -35,23 +35,22 @@ def ShellCommand(cmd):
     line = popen.stdout.readline().strip()
     print line
 
+print "OS release's version"
 ShellCommand('cat /etc/redhat-release ')
 print "OS kernel's version"
 ShellCommand('uname -r')
 (status, output) = commands.getstatusoutput('yum list kernel.x86_64 -q')
-reObj1 = re.compile('kernel\.x86_64(.*?)updates')
+reObj1 = re.compile('kernel\.x86_64\w+(.*?)\w+updates')
 s = reObj1.findall(output)
 print "The newest kernel version is "+str(s)
 
-(status, output) = commands.getstatusoutput('yum list-sec')
-r = re.sub("Loaded plugins: fastestmirror", "", output)
-s = re.sub("updateinfo list done", "", r)
+(status, output) = commands.getstatusoutput('yum list-sec -q')
 print s
 
 content = open('/etc/passwd').read()
 reObj1 = re.compile('(\w+).*?/bin/bash')
 s = reObj1.findall(content)
-print s
+print s[0]
 
 
 (status, output) = commands.getstatusoutput('netstat -tunlp')
