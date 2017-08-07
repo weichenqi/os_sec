@@ -33,7 +33,11 @@ import subprocess, re, commands
 def ShellCommand(cmd):
     popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     line = popen.stdout.readline().strip()
-    print line
+    return line
+
+def LinuxCommand(lcmd):
+    (status, output) = commands.getstatusoutput(lcmd)
+    return output
 
 ShellCommand('cat /etc/redhat-release ')
 ShellCommand('uname -r')
@@ -46,3 +50,5 @@ content = open('/etc/passwd').read()
 reObj1 = re.compile('(\w+).*?/bin/bash')
 s = reObj1.findall(content)
 print s
+
+
