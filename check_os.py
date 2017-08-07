@@ -3,7 +3,7 @@
 # Time: 2017-08-04 13:41 
 # @Author  : George Wei (weichenqi@gmail.com)
 # @Link    : http://weichenqi.com
-# @Version : 0.1
+# @Version : 0.2
 
 '''
 title：centos 7操作系统安全检查
