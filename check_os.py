@@ -42,7 +42,7 @@ ShellCommand('uname -r')
 (status, output) = commands.getstatusoutput('yum list kernel.x86_64 -q')
 reObj1 = re.compile('kernel\.x86_64\s+(.*?)\s+updates')
 s = reObj1.findall(output)[0]
-print "The newest kernel version is "+str(s)
+print "The newest kernel version is----> "+str(s)
 
 (status, output) = commands.getstatusoutput('yum list-sec -q')
 print "The newest software sec update----> "+output
@@ -57,4 +57,4 @@ for i in range(len(s)):
 (status, output) = commands.getstatusoutput('netstat -tunlp')
 r = re.sub("Active Internet connections \(only servers\)", "", output)
 s = re.sub("Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name ", "", r)
-print "Listen Tcp and Udp port details "+s
+print "Listen Tcp and Udp port details: "+s
