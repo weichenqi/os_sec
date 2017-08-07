@@ -45,12 +45,12 @@ s = reObj1.findall(output)[0]
 print "The newest kernel version is "+str(s)
 
 (status, output) = commands.getstatusoutput('yum list-sec -q')
-print "The newest software sec update "+output
+print "The newest software sec update----> "+output
 
 content = open('/etc/passwd').read()
 reObj1 = re.compile('(\w+).*?/bin/bash')
 s = reObj1.findall(content)
-print "User's shell is /bin/bash "+s[0]
+print "User's shell is /bin/bash with user: "+s[0:]
 
 
 (status, output) = commands.getstatusoutput('netstat -tunlp')
