@@ -40,6 +40,6 @@ ShellCommand('uname -r')
 #ShellCommand('yum list-sec')
 
 content = open('/etc/passwd').read()
-reObj1 = re.compile('/bin/bash')
+reObj1 = re.compile('\w+(.?*)/bin/bash')
 s = reObj1.findall(content)
 print s
