@@ -41,7 +41,7 @@ ShellCommand('uname -r')
 (status, output) = commands.getstatusoutput('yum list kernel.x86_64 -q')
 reObj1 = re.compile('kernel\.x86_64(.*?)updates')
 s = reObj1.findall(output)
-print "The newest kernel version is "+s
+print "The newest kernel version is "+str(s)
 
 (status, output) = commands.getstatusoutput('yum list-sec')
 r = re.sub("Loaded plugins: fastestmirror", "", output)
