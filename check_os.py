@@ -29,7 +29,7 @@ base ：python 2.7
 19.ipmi检查
 '''
 
-import subprocess, re, commands, time, requests
+import subprocess, re, commands, time
 
 def ShellCommand(cmd):
     popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
