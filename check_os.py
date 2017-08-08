@@ -73,5 +73,6 @@ print output
 
 
 machine_time = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-print machine_time
-
+print "machine_time---->"+machine_time
+(status, output) = commands.getstatusoutput('curl http://cgi.im.qq.com/cgi-bin/cgi_svrtime')
+print "Internet time---->"+output
