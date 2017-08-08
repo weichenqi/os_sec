@@ -29,7 +29,7 @@ base ：python 2.7
 19.ipmi检查
 '''
 
-import subprocess, re, commands
+import subprocess, re, commands, time, requests
 
 def ShellCommand(cmd):
     popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -71,4 +71,7 @@ print output
 print "nat chain---->"
 print output
 
+
+machine_time = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+print machine_time
 
