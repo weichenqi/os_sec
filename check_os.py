@@ -38,6 +38,7 @@ def ShellCommand(cmd):
 
 print "OS Release's version is:"
 ShellCommand('cat /etc/redhat-release ')
+
 print "OS kernel's version is:"
 ShellCommand('uname -r')
 (status, output) = commands.getstatusoutput('yum list kernel.x86_64 -q')
@@ -45,8 +46,10 @@ reObj1 = re.compile('kernel\.x86_64\s+(.*?)\s+updates')
 s = reObj1.findall(output)[0]
 print "The newest kernel version is----> "+str(s)
 
+
 (status, output) = commands.getstatusoutput('yum list-sec -q')
 print "The newest software sec update----> "+output
+
 
 content = open('/etc/passwd').read()
 reObj1 = re.compile('(\w+).*?/bin/bash')
@@ -59,3 +62,9 @@ for i in range(len(s)):
 r = re.sub("Active Internet connections \(only servers\)", "", output)
 s = re.sub("Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name ", "", r)
 print "Listen Tcp and Udp port details: "+s
+
+
+(status, output) = commands.getstatusoutput('iptables -nL')
+print "filter chain"+output
+(status, output) = commands.getstatusoutput('iptables -t nat -nL')
+print "nat chain"+output
