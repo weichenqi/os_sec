@@ -65,6 +65,10 @@ print "Listen Tcp and Udp port details: "+s
 
 
 (status, output) = commands.getstatusoutput('iptables -nL')
-print "filter chain"+output
+print "filter chain---->"
+print output
 (status, output) = commands.getstatusoutput('iptables -t nat -nL')
-print "nat chain"+output
+print "nat chain---->"
+print output
+
+
